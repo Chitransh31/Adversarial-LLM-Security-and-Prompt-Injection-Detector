@@ -1,0 +1,29 @@
+model:
+  name: "distilbert-base-uncased"
+  num_labels: 2
+  max_length: 512
+  checkpoint_path: null
+
+training:
+  epochs: 3
+  batch_size: 16
+  learning_rate: 2.0e-5
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  eval_strategy: "epoch"
+  save_strategy: "epoch"
+  load_best_model_at_end: true
+  metric_for_best_model: "f1"
+  output_dir: "artifacts/checkpoints"
+  logging_steps: 10
+
+inference:
+  backend: "pytorch"
+  threshold: 0.5
+  device: "cpu"
+  batch_size: 32
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 1

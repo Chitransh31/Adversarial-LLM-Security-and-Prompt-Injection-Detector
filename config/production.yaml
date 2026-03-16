@@ -1,0 +1,6 @@
+inference:
+  backend: "onnx"
+  device: "cpu"
+
+server:
+  workers: 4
